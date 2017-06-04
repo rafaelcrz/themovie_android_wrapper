@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
-    private static final String API_KEY = BuildConfig.THEMOVIEDB_API_KEY;
+    private static final String API_KEY = "YOUR_API_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
