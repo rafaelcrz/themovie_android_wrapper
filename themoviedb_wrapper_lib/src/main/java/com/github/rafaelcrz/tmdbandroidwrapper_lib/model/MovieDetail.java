@@ -13,7 +13,7 @@ public class MovieDetail implements Parcelable {
 
     private boolean adult;
     private String backdrop_path;
-    private List<Belong> belongs_to_collection;
+    private Belong belongs_to_collection;
     private int budget;
     private List<Genre> genres;
     private String homepage;
@@ -36,13 +36,15 @@ public class MovieDetail implements Parcelable {
     private boolean video;
     private float vote_average;
     private int vote_count;
+    private TrailerCatalog videos;
 
-    public MovieDetail(){}
+    public MovieDetail() {
+    }
 
     protected MovieDetail(Parcel in) {
         adult = in.readByte() != 0;
         backdrop_path = in.readString();
-        belongs_to_collection = in.createTypedArrayList(Belong.CREATOR);
+        belongs_to_collection = (Belong) in.readParcelable(Belong.class.getClassLoader());
         budget = in.readInt();
         genres = in.createTypedArrayList(Genre.CREATOR);
         homepage = in.readString();
@@ -65,6 +67,7 @@ public class MovieDetail implements Parcelable {
         video = in.readByte() != 0;
         vote_average = in.readFloat();
         vote_count = in.readInt();
+        videos = (TrailerCatalog) in.readParcelable(TrailerCatalog.class.getClassLoader());
     }
 
     public static final Creator<MovieDetail> CREATOR = new Creator<MovieDetail>() {
@@ -171,12 +174,16 @@ public class MovieDetail implements Parcelable {
         return vote_count;
     }
 
-    public List<Belong> getBelongs_to_collection() {
+    public Belong getBelongs_to_collection() {
         return belongs_to_collection;
     }
 
     public List<Company> getProduction_companies() {
         return production_companies;
+    }
+
+    public TrailerCatalog getVideos() {
+        return videos;
     }
 
     @Override
@@ -207,6 +214,7 @@ public class MovieDetail implements Parcelable {
                 ", video=" + video +
                 ", vote_average=" + vote_average +
                 ", vote_count=" + vote_count +
+                "videos" + videos +
                 '}';
     }
 
@@ -219,7 +227,7 @@ public class MovieDetail implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte((byte) (adult ? 1 : 0));
         dest.writeString(backdrop_path);
-        dest.writeTypedList(belongs_to_collection);
+        dest.writeParcelable(belongs_to_collection, flags);
         dest.writeInt(budget);
         dest.writeTypedList(genres);
         dest.writeString(homepage);
@@ -242,5 +250,6 @@ public class MovieDetail implements Parcelable {
         dest.writeByte((byte) (video ? 1 : 0));
         dest.writeFloat(vote_average);
         dest.writeInt(vote_count);
+        dest.writeParcelable(videos, flags);
     }
 }
