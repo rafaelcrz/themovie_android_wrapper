@@ -43,6 +43,13 @@ Return a detail of specific movie
 ### Video
 Return a catalog video from a specific movie
 
+## Samples
+### Simple
+* This project has a simple sample, for get the Popular Movies.
+### Complete
+* It's a complete sample <a href="https://github.com/rafaelcrz/themoviedb_android_client">themoviedb_android_client</a>.
+
+
 ## Usage
 
 ```
@@ -51,6 +58,9 @@ Return a catalog video from a specific movie
       
 //Default lenguage is the local device
       theMovieApi.setLanguage("pt-BR");
+      
+//Set the number page
+      theMovieApi.setPage("1"); //If you need do a infinit scroll set the page in the requests call
 
 //Get a catalog movie
       theMovieApi.getMovieCatalog(TheMovieApi.NOW_PLAYING, new TheMovieApiListener<MovieCatalog>() {
@@ -61,6 +71,7 @@ Return a catalog video from a specific movie
                     for (Movie movie : movieCatalog.getResults()) {
                         Log.i(TAG,movie.getTitle());
                     }
+                    total_page = movieResultResponse.body().getTotal_pages(); //Total pages return from the API
                 }else{
                   Log.e(TAG,"HTTP_CODE -> "+movieResultResponse.code());
                 }
