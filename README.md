@@ -10,14 +10,14 @@ This project is in development.
 Movie
 - GetCatalog Movies (Popular, Playing now, Top rated)
 - Get Videos from movies
-- Get detail movie 
+- Get detail movie
 
 ## Integrating into your project
 
-This project is available in <a href="https://jitpack.io/">JitPack.io</a> repository.
+This project is available in [JitPack.io](https://jitpack.io/) repository.
 
-## Add into |Project| build.gradle 
-```
+## Add into |Project| build.gradle
+```java
 allprojects {
     repositories {
         jcenter()
@@ -25,14 +25,14 @@ allprojects {
     }
 }
 ```
-## Add into |Module app| build.gradle 
-```
+## Add into |Module app| build.gradle
+```java
 dependencies {
   compile 'com.github.rafaelcrz:themovie_android_wrapper:0.0.3'
 }
 ```
 ## API KEY
-<a href="https://developers.themoviedb.org/3/getting-started">How get the "Themoviedb" API KEY</a>
+[How get the "Themoviedb" API KEY](https://developers.themoviedb.org/3/getting-started)
 
 ## Endpoints availables
 
@@ -47,42 +47,39 @@ Return a catalog video from a specific movie
 ### Simple
 * This project has a simple sample, for get the Popular Movies.
 ### Complete
-* It's a complete sample <a href="https://github.com/rafaelcrz/themoviedb_android_client">themoviedb_android_client</a>.
+* It's a complete sample [themoviedb_android_client](https://github.com/rafaelcrz/themoviedb_android_client).
 
 
 ## Usage
 
-```
+```java
 //Create a new instance for API
-      TheMovieApi theMovieApi = new TheMovieApi(mContext, "YOUR_API_KEY");
-      
+TheMovieApi theMovieApi = new TheMovieApi(mContext, "YOUR_API_KEY");
+
 //Default lenguage is the local device
-      theMovieApi.setLanguage("pt-BR");
-      
+theMovieApi.setLanguage("pt-BR");
+
 //Set the number page
-      theMovieApi.setPage("1"); //If you need do a infinit scroll set the page in the requests call
+theMovieApi.setPage("1"); //If you need do a infinit scroll set the page in the requests call
 
 //Get a catalog movie
-      theMovieApi.getMovieCatalog(TheMovieApi.NOW_PLAYING, new TheMovieApiListener<MovieCatalog>() {
-            @Override
-            public void onResponse(Call<MovieCatalog> call, Response<MovieCatalog> movieResultResponse) {
-                if (movieResultResponse.isSuccessful()) {
-                    MovieCatalog movieCatalog = movieResultResponse.body();
-                    for (Movie movie : movieCatalog.getResults()) {
-                        Log.i(TAG,movie.getTitle());
-                    }
-                    total_page = movieResultResponse.body().getTotal_pages(); //Total pages return from the API
-                }else{
-                  Log.e(TAG,"HTTP_CODE -> "+movieResultResponse.code());
-                }
+theMovieApi.getMovieCatalog(TheMovieApi.NOW_PLAYING, new TheMovieApiListener<MovieCatalog>() {
+    @Override
+    public void onResponse(Call<MovieCatalog> call, Response<MovieCatalog> movieResultResponse) {
+        if (movieResultResponse.isSuccessful()) {
+            MovieCatalog movieCatalog = movieResultResponse.body();
+            for (Movie movie : movieCatalog.getResults()) {
+                Log.i(TAG,movie.getTitle());
             }
+            total_page = movieResultResponse.body().getTotal_pages(); //Total pages return from the API
+        }else{
+          Log.e(TAG,"HTTP_CODE -> "+movieResultResponse.code());
+        }
+    }
 
-            @Override
-            public void onFailure(Call<MovieCatalog> call, Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        });
+    @Override
+    public void onFailure(Call<MovieCatalog> call, Throwable throwable) {
+        throwable.printStackTrace();
+    }
+});
 ```
-
-
-
