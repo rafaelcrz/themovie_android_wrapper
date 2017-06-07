@@ -28,7 +28,7 @@ allprojects {
 ## Add into |Module app| build.gradle
 ```java
 dependencies {
-  compile 'com.github.rafaelcrz:themovie_android_wrapper:0.0.3'
+  compile 'com.github.rafaelcrz:themovie_android_wrapper:master-SNAPSHOT'
 }
 ```
 ## API KEY
