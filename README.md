@@ -4,7 +4,7 @@ This is a wrapper for <a href="https://www.themoviedb.org/documentation/api">The
 
 This project uses the <a href="http://square.github.io/retrofit/Retrofit">Retrofit</a> to create interfaces from tmdb API endpoints.
 
-This project is in development.
+### This project is on development.
 
 ## Endpoint available:
 Movie
