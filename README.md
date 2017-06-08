@@ -37,7 +37,11 @@ dependencies {
 ## Endpoints availables
 
 ### Movie (popular, top rated and playing now movies)
-TheMovieApi.NOW_PLAYING, TheMovieApi.POPULAR, TheMovieApi.TOP_RATED
+```
+TheMovieApi.NOW_PLAYING;
+TheMovieApi.POPULAR;
+TheMovieApi.TOP_RATED
+```
 ### Detail movie
 Return a detail of specific movie
 ### Video
@@ -45,10 +49,9 @@ Return a catalog video from a specific movie
 
 ## Samples
 ### Simple
-* This project has a simple sample, for get the Popular Movies.
+* Into this project has a simple sample, for get the Popular Movies.
 ### Complete
-* It's a complete sample [themoviedb_android_client](https://github.com/rafaelcrz/themoviedb_android_client).
-
+* It's a complete sample [themoviedb_android_client](https://github.com/rafaelcrz/themoviedb_android_client) using this wrapper.
 
 ## Usage
 
