@@ -37,7 +37,7 @@ dependencies {
 ## Endpoints availables
 
 ### Movie (popular, top rated and playing now movies)
-Use it in the first param ```java getMovieCatalog(<movieCategory>, <theMovieApiListener>) ```
+Use it in the first param ``` getMovieCatalog(<movieCategory>, <theMovieApiListener>) ```
 ```java
 TheMovieApi.NOW_PLAYING;
 TheMovieApi.POPULAR;
