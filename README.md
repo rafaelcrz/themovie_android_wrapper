@@ -56,6 +56,15 @@ Return a catalog video from a specific movie
 
 ## Usage
 
+Before you can use the TheMovieApi you must initialize the singleton.
+You need put the TheMovieApplication into the ``` AndroidManifest.xml ```
+```
+<application
+android:name="com.github.rafaelcrz.tmdbandroidwrapper_lib.api.TheMovieApplication"
+(...)
+</application>
+```
+
 ```java
 //Create a new instance for API
 TheMovieApi theMovieApi = new TheMovieApi(mContext, "YOUR_API_KEY");
