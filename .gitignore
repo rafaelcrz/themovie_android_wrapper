@@ -11,3 +11,6 @@ secret.properties
 /build
 /captures
 .externalNativeBuild
+*.xml
+*.idea
+local.properties
